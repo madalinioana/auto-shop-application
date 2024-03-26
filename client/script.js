@@ -50,7 +50,7 @@ form.addEventListener('submit', async (event) => {
         });
 
         if (response.ok) {
-            alert('Car successfully added!');
+            //alert('Car successfully added!');
             // Reîmprospătăm lista de mașini după adăugarea cu succes
             fetchData();
         } else {
@@ -84,5 +84,27 @@ document.getElementById('edit-form').addEventListener('submit', async (event) =>
         }
     } catch (error) {
         console.error('Eroare la actualizarea datelor:', error);
+    }
+});
+
+document.getElementById('delete-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const formDataObject = Object.fromEntries(formData.entries());
+
+    try {
+        const response = await fetch('http://localhost:3000/api/cars/' + formDataObject.id, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            //alert('Mașina a fost ștearsă cu succes!');
+            // Reîmprospătăm lista de mașini după ștergerea cu succes
+            fetchData();
+        } else {
+            console.error('Eroare la ștergerea mașinii:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Eroare la ștergerea mașinii:', error);
     }
 });
