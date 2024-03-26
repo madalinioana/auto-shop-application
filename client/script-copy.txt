@@ -1,0 +1,83 @@
+// Apelează funcția fetchData când se încarcă pagina
+window.addEventListener('DOMContentLoaded', fetchData);
+
+// Funcția pentru a face o cerere către backend și pentru a afișa datele în HTML
+async function fetchData() {
+    try {
+        // Face o cerere GET către ruta corespunzătoare din backend
+        const response = await fetch('http://localhost:3000/api/colectie_1');
+        if (!response.ok) {
+            throw new Error('Eroare la obținerea datelor');
+        }
+
+        // Parsează răspunsul JSON
+        const data = await response.json();
+
+        // Afișează datele într-un element HTML
+        const container = document.getElementById('container'); // presupunând că ai un element cu id-ul "container" în HTML
+        container.innerHTML = ''; // curăță containerul înainte de a adăuga noi date
+        data.forEach(item => {
+            const listItem = document.createElement('li');
+            listItem.textContent = JSON.stringify(item); // afișează fiecare document ca un șir JSON
+            container.appendChild(listItem); // adaugă elementul în container
+        });
+    } catch (error) {
+        console.error('Eroare:', error);
+    }
+}
+
+// Funcție pentru a afișa datele din baza de date în tabel
+async function fetchData() {
+    try {
+        const response = await fetch('http://localhost:3000/api/colectie_1');
+        const data = await response.json();
+
+        const tableBody = document.querySelector('#data-table tbody');
+        tableBody.innerHTML = '';
+
+        data.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+        <td>${item._id}</td>
+        <td>${item.marca}</td>
+        <td>${item.model}</td>
+        <td>${item.an_fabricatie}</td>
+        <td>${item.culoare}</td>
+      `;
+            tableBody.appendChild(row);
+        });
+    } catch (error) {
+        console.error('Eroare la obținerea datelor:', error);
+    }
+}
+
+// Ascultă evenimentul de submit al formularului pentru a trimite datele către server
+const form = document.querySelector('#data-form');
+form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+    const formDataObject = Object.fromEntries(formData.entries());
+
+    try {
+        const response = await fetch('http://localhost:3000/api/colectie_1', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formDataObject)
+        });
+
+        if (response.ok) {
+            // Reafișează datele din tabel după ce s-au adăugat noi date
+            fetchData();
+        } else {
+            console.error('Eroare la adăugarea datelor:', response.statusText);
+        }
+    } catch (error) {
+        console.error('Eroare la adăugarea datelor:', error);
+    }
+});
+
+// Apelarea funcției fetchData() pentru a afișa datele inițiale din baza de date
+fetchData();

@@ -1,0 +1,90 @@
+@font-face {
+    font-family: "GeneralSans Regular";
+    src: url(font/GeneralSans-Regular.woff2);
+}
+
+@font-face {
+    font-family: "GeneralSans Black";
+    src: url(font/GeneralSans-Bold.woff2);
+}
+
+@font-face {
+    font-family: "GeneralSans Bold";
+    src: url(font/GeneralSans-Semibold.woff2);
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 3vh;
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+
+.table-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    flex-grow: 1;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+#data-table {
+    flex-grow: 1;
+    max-width: 75vw;
+}
+
+* {
+    font-family: "GeneralSans Regular", sans-serif;
+}
+
+td {
+    border: solid 1px;
+    padding-left: 0.5em;
+}
+
+h1 {
+    font-family: "GeneralSans Black", sans-serif;
+    font-size: 40px;
+}
+
+h2 {
+    font-family: "GeneralSans Regular", sans-serif;
+}
+
+#formular-adaugare {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10em;
+    order: 2;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    background-color: white;
+    border-radius: 10px;
+    max-width: 5em;
+}
+
+input {
+    /*padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 10px;*/
+    margin-bottom: 1em;
+}
+
+label {
+    margin-left: 0em;
+    margin-bottom: 0.2em;
+}
+
+#formulare {
+    display: flex;
+    flex-direction: row;
+}

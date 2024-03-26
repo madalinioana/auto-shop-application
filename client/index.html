@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Auto Shop Database</h1>
+    <div class="table-wrapper">
+        <h2>Cars Collection</h2>
+        <table id="data-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Service Date</th>
+                <th>Service Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div id="formulare">
+        <div id="formular-adaugare">
+            <h2>Add a new car</h2>
+            <form id="data-form">
+                <label for="brand">Brand:</label>
+                <input type="text" id="brand" name="brand" required>
+                <label for="model">Model:</label>
+                <input type="text" id="model" name="model" required>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div id="formular-editare">
+            <h2>Modify an existing car</h2>
+            <form id="edit-form">
+                <label for="edit-id">ID:</label>
+                <input id="edit-id" name="id">
+                <label for="brand">Brand:</label>
+                <input type="text" id="edit-brand" name="brand">
+                <label for="edit-model">Model:</label>
+                <input type="text" id="edit-model" name="model">
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
