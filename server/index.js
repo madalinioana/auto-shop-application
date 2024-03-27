@@ -7,7 +7,7 @@ const port = 3000;
 app.use(cors());
 
 // conectare la baza de date
-const uri = 'mongodb+srv://madalinioana:Andreiarul_0@proiectbd.ipyt5ul.mongodb.net/?retryWrites=true&w=majority&appName=ProiectBD';
+const uri = 'mongodb+srv://madalinioana:qwertyqwerty@proiectbd.ipyt5ul.mongodb.net/?retryWrites=true&w=majority&appName=ProiectBD';
 const client = new MongoClient(uri);
 
 // verificare port
